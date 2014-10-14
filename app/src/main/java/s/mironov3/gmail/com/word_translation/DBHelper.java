@@ -11,6 +11,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_THEME = "theme";
     public static final String THEME_ID = "id";
     public static final String THEME_NAME = "name";
+    public static final String THEME_RATING = "rating";
 
     // Поля и название таблицы с парами слов "слово-первод"
     public static final String TABLE_WORD = "translate";
@@ -39,12 +40,14 @@ public class DBHelper extends SQLiteOpenHelper {
         // создаем таблицу с названием темы
         db.execSQL("create table " + TABLE_THEME + " ("
                 + THEME_ID + " integer primary key autoincrement,"
-                + THEME_NAME + " text"
+                + THEME_NAME + " text,"
+                + THEME_RATING + " integer"
                 +  ");");
         // заполняем таблицу
         for(int i = 0; i < nameTheme.length; i++ ) {
             cv.clear();
             cv.put(THEME_NAME, nameTheme[i]);
+            cv.put(THEME_RATING, 0);
             db.insert(TABLE_THEME, null, cv);
         }
 
@@ -73,32 +76,28 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String getTableTheme() {
         return TABLE_THEME;
     }
-
     public static String getThemeId() {
         return THEME_ID;
     }
-
     public static String getThemeName() {
         return THEME_NAME;
     }
-
     public static String getTableWord() {
         return TABLE_WORD;
     }
-
     public static String getTranslateId() {
         return TRANSLATE_ID;
     }
-
     public static String getWord() {
         return WORD;
     }
-
     public static String getTranslate() {
         return TRANSLATE;
     }
-
     public static String getThemeTranslateId() {
         return THEME_TRANSLATE_ID;
+    }
+    public static String getThemeRating() {
+        return THEME_RATING;
     }
 }
