@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -50,9 +51,17 @@ public class ListItemAdapter extends BaseAdapter {
         ListItemTheme liTheme = getTheme(i);
 
         ((TextView) view.findViewById(R.id.Texttheme)).setText(liTheme.getName());
-        ((TextView) view.findViewById(R.id.Textrating)).setText("rating: "+liTheme.getRating());
+        ((TextView) view.findViewById(R.id.Textrating)).setText("rating: "+liTheme.getId());
+        //((TextView) view.findViewById(R.id.Textrating)).setText("rating: "+liTheme.getRating());
         ((TextView) view.findViewById(R.id.TextcountWord)).setText("total word: "+liTheme.getTotalWord());
+        //((ImageView) view.findViewById(R.id.ImageTheme)).setImageBitmap(liTheme.getImage());
 
+
+        ((ImageView) view.findViewById(R.id.ImageTheme)).setImageDrawable(liTheme.getImage());
         return view;
+    }
+
+    public Context getCtx() {
+        return ctx;
     }
 }

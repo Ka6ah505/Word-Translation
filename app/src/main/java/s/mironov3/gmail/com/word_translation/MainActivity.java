@@ -2,8 +2,10 @@ package s.mironov3.gmail.com.word_translation;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,7 +19,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-    ArrayList<ListItemTheme> listTheme = new ArrayList<ListItemTheme>();
+    ArrayList<ListItemTheme> listItemTheme = new ArrayList<ListItemTheme>();
+    ArrayList<Drawable> imageList = new ArrayList<Drawable>();
     ListItemAdapter liAdapter;
     DBHelper dbHelper;
     ListView lvMain;
@@ -26,6 +29,15 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        liAdapter = new ListItemAdapter(this, listItemTheme);
+
+        Resources contextResources = liAdapter.getCtx().getResources();
+
+        imageList.add(contextResources.getDrawable(R.drawable.family));
+        imageList.add(contextResources.getDrawable(R.drawable.city));
+        imageList.add(contextResources.getDrawable(R.drawable.color));
+        imageList.add(contextResources.getDrawable(R.drawable.sport));
+        Log.d("MYLOG", imageList.size()+" size");
 
         dbHelper = new DBHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -34,7 +46,7 @@ public class MainActivity extends Activity {
         Log.d("MYLOG", "----------TABLE THEME------------");
         cursor = db.query(dbHelper.getTableTheme(), null, null, null, null, null, null);
         initArrayList(cursor);
-        liAdapter = new ListItemAdapter(this, listTheme);
+
         cursor.close();
         lvMain = (ListView) findViewById(R.id.listTheme);
         lvMain.setAdapter(liAdapter);
@@ -66,11 +78,14 @@ public class MainActivity extends Activity {
             if (cursor.moveToFirst()) {
                 do {
                     int i = countWord(getTable(cursor.getInt(cursor.getColumnIndex("id"))));
+                    int ii = cursor.getInt(cursor.getColumnIndex("id"));
+                    Log.d("MYLOG", ii+" count");
 
-                    listTheme.add(new ListItemTheme(cursor.getInt(cursor.getColumnIndex("id")),
+
+                    listItemTheme.add(new ListItemTheme(cursor.getInt(cursor.getColumnIndex("id")),
                             cursor.getString(cursor.getColumnIndex("name")),
                             cursor.getInt(cursor.getColumnIndex("rating")),
-                            i));
+                            i, imageList.get(ii-1) ));
                 } while (cursor.moveToNext());
             } else {
                 Log.d("MYLOG", "BEDA!!!");

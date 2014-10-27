@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     // Поля и название таблицы с темами набора слов
-    public static final String TABLE_THEME = "listTheme";
+    public static final String TABLE_THEME = "listItemTheme";
     public static final String THEME_ID = "id";
     public static final String THEME_NAME = "name";
     public static final String THEME_RATING = "rating";
@@ -21,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String THEME_TRANSLATE_ID = "thId";
 
     // временные данные
-    String[] nameTheme = { "FAMILY", "CITY", "COLOURS", "SPORT" };
+    String[] nameTheme = { "FAMILY", "CITY", "COLORS", "SPORT" };
 
     String[] wordEnglish = { "baby", "brother", "red", "soccer", "street", "pavement" };
     String[] wordTranslate = { "ребёнок", "брат", "красный", "футбол", "улица", "рекламный щит" };
