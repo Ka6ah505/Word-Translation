@@ -1,12 +1,15 @@
 package s.mironov3.gmail.com.word_translation;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ public class MainActivity extends Activity {
     ArrayList<ListItemTheme> listTheme = new ArrayList<ListItemTheme>();
     ListItemAdapter liAdapter;
     DBHelper dbHelper;
+    ListView lvMain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +36,29 @@ public class MainActivity extends Activity {
         initArrayList(cursor);
         liAdapter = new ListItemAdapter(this, listTheme);
         cursor.close();
-        ListView lvMain = (ListView) findViewById(R.id.listTheme);
+        lvMain = (ListView) findViewById(R.id.listTheme);
         lvMain.setAdapter(liAdapter);
         Log.d("MYLOG", "---------------------------------");
+
+        lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, MonitoringModeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        /*lvMain.setOnScrollListener( new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i2, int i3) {
+
+            }
+        });*/
     }
 
     private void initArrayList(Cursor cursor) {
@@ -105,4 +130,5 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
