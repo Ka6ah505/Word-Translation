@@ -15,7 +15,7 @@ import android.widget.ListView;
 public class MonitoringModeActivity extends Activity {
 
     ListView lsMode;
-    String [] items = {"Practice", "Self-monitoring", "Examination"};
+    String [] items = {"Practice", "Self-monitoring", "ExaminationActivity"};
     String idTheme;
 
     @Override
@@ -26,7 +26,7 @@ public class MonitoringModeActivity extends Activity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.text_item_view, items);
         lsMode.setAdapter(adapter);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         idTheme = intent.getStringExtra("idTheme");
         Integer i = Integer.valueOf(idTheme);
         Log.d("MYLOG", "принял ID темы: №" + i);
@@ -34,7 +34,20 @@ public class MonitoringModeActivity extends Activity {
         lsMode.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Intent intent1 = new Intent(MonitoringModeActivity.class, );
+                switch (i){
+                    case 0:
+                        Intent intentPractice = new Intent(MonitoringModeActivity.this, PracticeActivity.class);
+                        startActivity(intentPractice);
+                        break;
+                    case 1:
+                        Intent intentSMitring = new Intent(MonitoringModeActivity.this, SelfMonitrigActivity.class);
+                        startActivity(intentSMitring);
+                        break;
+                    case 2:
+                        Intent intentExamination = new Intent(MonitoringModeActivity.this, ExaminationActivity.class);
+                        startActivity(intentExamination);
+                        break;
+                }
             }
         });
     }

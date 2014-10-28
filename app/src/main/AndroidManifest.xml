@@ -20,6 +20,18 @@
             android:name=".MonitoringModeActivity"
             android:label="Monitoring Mode" >
         </activity>
+        <activity
+            android:name=".PracticeActivity"
+            android:label="@string/title_activity_practice" >
+        </activity>
+        <activity
+            android:name=".SelfMonitrigActivity"
+            android:label="@string/title_activity_self_monitrig" >
+        </activity>
+        <activity
+            android:name=".ExaminationActivity"
+            android:label="@string/title_activity_examination" >
+        </activity>
     </application>
 
 </manifest>
