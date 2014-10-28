@@ -56,21 +56,11 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, MonitoringModeActivity.class);
+                intent.putExtra("idTheme", adapterView.getItemIdAtPosition(i+1)+"");
+                Log.d("MYLOG", "передааю ID темы: №"+adapterView.getItemIdAtPosition(i+1));
                 startActivity(intent);
             }
         });
-
-        /*lvMain.setOnScrollListener( new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView absListView, int i) {
-
-            }
-
-            @Override
-            public void onScroll(AbsListView absListView, int i, int i2, int i3) {
-
-            }
-        });*/
     }
 
     private void initArrayList(Cursor cursor) {
