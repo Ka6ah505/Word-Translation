@@ -68,14 +68,12 @@ public class MainActivity extends Activity {
             if (cursor.moveToFirst()) {
                 do {
                     int i = countWord(getTable(cursor.getInt(cursor.getColumnIndex("id"))));
-                    int ii = cursor.getInt(cursor.getColumnIndex("id"));
-                    Log.d("MYLOG", ii+" count");
-
+                    int id = cursor.getInt(cursor.getColumnIndex("id"));
 
                     listItemTheme.add(new ListItemTheme(cursor.getInt(cursor.getColumnIndex("id")),
                             cursor.getString(cursor.getColumnIndex("name")),
                             cursor.getInt(cursor.getColumnIndex("rating")),
-                            i, imageList.get(ii-1) ));
+                            i, imageList.get(id-1) ));
                 } while (cursor.moveToNext());
             } else {
                 Log.d("MYLOG", "BEDA!!!");

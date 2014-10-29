@@ -1,44 +1,69 @@
 package s.mironov3.gmail.com.word_translation;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 public class PracticeActivity extends Activity {
 
+    ArrayList<PairOfWordTranslation> powtlList = new ArrayList<PairOfWordTranslation>();
+    PairOWordTranslationAdapter powtAdapter;
+    ListView liPair;
+    DBHelper dbHelper;
+    String idTheme;
+    int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.table_word);
 
-        TableRow tableRow = new TableRow(this);
-        /*for(int i = 0; i < 8; i++) {
-            TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-            tableRow.setLayoutParams(params);
+        final Intent intent = getIntent();
+        idTheme = intent.getStringExtra("idTheme");
+        i = Integer.valueOf(idTheme);
+        Log.d("MYLOG", "принял ID темы в Practice: №" + i);
 
-            TableRow.LayoutParams param = new TableRow.LayoutParams();
-            param.setMargins(0, 0, 0, 0);
-            TextView textViewWord = new TextView(this);
-            textViewWord.setText("sas");
-            textViewWord.setLayoutParams(param);
+        dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            TableRow.LayoutParams param1 = new TableRow.LayoutParams();
-            param.setMargins(0, 2, 0, 0);
-            TextView textViewWord1 = new TextView(this);
-            textViewWord.setText("сас");
-            textViewWord.setLayoutParams(param1);
+        initArrayList(db);
 
-            tableRow.addView(textViewWord);
-            tableRow.addView(textViewWord1);
-            tableLayout.addView(tableRow);
-        }*/
+        liPair = (ListView) findViewById(R.id.list_pair);
+        powtAdapter = new PairOWordTranslationAdapter(this, powtlList);
+        liPair.setAdapter(powtAdapter);
+    }
 
+    private void initArrayList(SQLiteDatabase db) {
+        Cursor cursor = db.rawQuery("select * from " + dbHelper.TABLE_WORD
+                + " where " + dbHelper.THEME_TRANSLATE_ID
+                + " = " + i, null);
+        int b=0;
+        if( cursor != null ) {
+            if (cursor.moveToFirst()) {
+                do {
+                    b++;
+                    PairOfWordTranslation p = new PairOfWordTranslation(cursor.getString(cursor.getColumnIndex(dbHelper.WORD)),
+                            cursor.getString(cursor.getColumnIndex(dbHelper.TRANSLATE)));
+                    /*powtlList.add(new PairOfWordTranslation(cursor.getString(cursor.getColumnIndex(dbHelper.WORD)),
+                            cursor.getString(cursor.getColumnIndex(dbHelper.TRANSLATE))));*/
+                    powtlList.add(p);
+                    //Log.d("MYLOG", "\n word \t"+p.getWord()+"\ntranslate\t"+p.getTranslate());
+                } while (cursor.moveToNext());
+            } else {
+                Log.d("MYLOG", "BEDA!!!");
+            }
+        }
+        cursor.close();
+        Log.d("MYLOG", "пар слов найдено " + b);
     }
 
     @Override
