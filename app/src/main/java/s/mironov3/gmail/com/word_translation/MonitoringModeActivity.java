@@ -37,14 +37,17 @@ public class MonitoringModeActivity extends Activity {
                 switch (i){
                     case 0:
                         Intent intentPractice = new Intent(MonitoringModeActivity.this, PracticeActivity.class);
+                        intentPractice.putExtra("idTheme", idTheme);
                         startActivity(intentPractice);
                         break;
                     case 1:
                         Intent intentSMitring = new Intent(MonitoringModeActivity.this, SelfMonitrigActivity.class);
+                        intentSMitring.putExtra("idTheme", idTheme);
                         startActivity(intentSMitring);
                         break;
                     case 2:
                         Intent intentExamination = new Intent(MonitoringModeActivity.this, ExaminationActivity.class);
+                        intentExamination.putExtra("idTheme", idTheme);
                         startActivity(intentExamination);
                         break;
                 }

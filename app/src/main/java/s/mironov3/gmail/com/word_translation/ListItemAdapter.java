@@ -49,14 +49,9 @@ public class ListItemAdapter extends BaseAdapter {
             view = lInflater.inflate(R.layout.item, viewGroup, false);
         }
         ListItemTheme liTheme = getTheme(i);
-
         ((TextView) view.findViewById(R.id.Texttheme)).setText(liTheme.getName());
-        ((TextView) view.findViewById(R.id.Textrating)).setText("rating: "+liTheme.getId());
-        //((TextView) view.findViewById(R.id.Textrating)).setText("rating: "+liTheme.getRating());
+        ((TextView) view.findViewById(R.id.Textrating)).setText("rating: "+liTheme.getRating());
         ((TextView) view.findViewById(R.id.TextcountWord)).setText("total word: "+liTheme.getTotalWord());
-        //((ImageView) view.findViewById(R.id.ImageTheme)).setImageBitmap(liTheme.getImage());
-
-
         ((ImageView) view.findViewById(R.id.ImageTheme)).setImageDrawable(liTheme.getImage());
         return view;
     }
