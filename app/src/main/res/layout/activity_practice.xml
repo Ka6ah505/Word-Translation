@@ -3,11 +3,55 @@
     android:layout_height="wrap_content"
     android:id="@+id/table_word"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#fff5ffb3">
+    android:background="#fff5ffb3"
+    android:orientation="vertical">
 
-    <ListView android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/list_pair"
-        android:clickable="false" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Word"
+                android:textSize="25sp"
+                android:id="@+id/textView"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Translate"
+                android:id="@+id/textView2"
+                android:textSize="25sp"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ListView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_pair"
+            android:clickable="false" />
+    </LinearLayout>
 
 </LinearLayout>
