@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class PairOWordTranslationAdapter extends BaseAdapter {
+public class PairOfWordTranslationAdapter extends BaseAdapter {
     Context ctx;
     LayoutInflater lInflater;
     ArrayList<PairOfWordTranslation> coupe;
 
-    public PairOWordTranslationAdapter(Context ctx, ArrayList<PairOfWordTranslation> coupe) {
+    public PairOfWordTranslationAdapter(Context ctx, ArrayList<PairOfWordTranslation> coupe) {
         this.ctx = ctx;
         this.lInflater = (LayoutInflater) ctx
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);

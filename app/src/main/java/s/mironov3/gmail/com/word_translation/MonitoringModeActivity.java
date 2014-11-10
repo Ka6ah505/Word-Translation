@@ -15,7 +15,7 @@ import android.widget.ListView;
 public class MonitoringModeActivity extends Activity {
 
     ListView lsMode;
-    String [] items = {"Practice", "Self-monitoring", "ExaminationActivity"};
+    String [] items = {"Practice", "Self-monitoring", "Examination"};
     String idTheme;
 
     @Override
@@ -23,13 +23,12 @@ public class MonitoringModeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitoring_mode);
         lsMode = (ListView) findViewById(R.id.lvMode);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.text_item_view, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_monitoring, items);
         lsMode.setAdapter(adapter);
 
         final Intent intent = getIntent();
         idTheme = intent.getStringExtra("idTheme");
-        Integer i = Integer.valueOf(idTheme);
-        Log.d("MYLOG", "принял ID темы: №" + i);
+        Log.d("MYLOG", "принял ID темы: №" + idTheme);
 
         lsMode.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

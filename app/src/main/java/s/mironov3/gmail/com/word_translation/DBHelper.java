@@ -23,9 +23,9 @@ public class DBHelper extends SQLiteOpenHelper {
     // временные данные
     String[] nameTheme = { "FAMILY", "CITY", "COLORS", "SPORT" };
 
-    String[] wordEnglish = { "baby", "brother", "red", "soccer", "street", "pavement" };
-    String[] wordTranslate = { "ребёнок", "брат", "красный", "футбол", "улица", "рекламный щит" };
-    int[] word_posid = { 1, 1, 3, 4, 2, 2 };
+    String[] wordEnglish = { "baby", "brother", "red", "soccer", "street", "pavement", "mather", "father", "grandmother", "grandfather", "cousin", "aunt", "uncle" };
+    String[] wordTranslate = { "ребёнок", "брат", "красный", "футбол", "улица", "рекламный щит", "мама", "папа", "бабушка", "дедушка", "кузен", "тётя", "дядя" };
+    int[] word_posid = { 1, 1, 3, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1 };
 
     public DBHelper(Context context) {
         // конструктор суперкласса

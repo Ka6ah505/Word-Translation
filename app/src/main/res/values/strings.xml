@@ -5,8 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_monitoring_mode">MonitoringModeActivity</string>
-    <string name="title_activity_practice">PracticeActivity</string>
-    <string name="title_activity_self_monitrig">SelfMonitrigActivity</string>
+    <string name="title_activity_practice">Practice</string>
+    <string name="title_activity_self_monitrig">Self Monitoring</string>
     <string name="title_activity_examination">Examination</string>
     <string name="column_word">Word</string>
     <string name="column_translate">Translate</string>

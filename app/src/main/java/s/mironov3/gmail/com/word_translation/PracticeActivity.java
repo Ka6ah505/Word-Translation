@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class PracticeActivity extends Activity {
 
     ArrayList<PairOfWordTranslation> powtlList = new ArrayList<PairOfWordTranslation>();
-    PairOWordTranslationAdapter powtAdapter;
+    PairOfWordTranslationAdapter powtAdapter;
     ListView liPair;
     DBHelper dbHelper;
     String idTheme;
@@ -38,7 +38,7 @@ public class PracticeActivity extends Activity {
         initArrayList(db);
 
         liPair = (ListView) findViewById(R.id.list_pair);
-        powtAdapter = new PairOWordTranslationAdapter(this, powtlList);
+        powtAdapter = new PairOfWordTranslationAdapter(this, powtlList);
         liPair.setAdapter(powtAdapter);
     }
 

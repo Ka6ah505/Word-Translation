@@ -37,27 +37,24 @@ public class MainActivity extends Activity {
         imageList.add(contextResources.getDrawable(R.drawable.city));
         imageList.add(contextResources.getDrawable(R.drawable.color));
         imageList.add(contextResources.getDrawable(R.drawable.sport));
-        Log.d("MYLOG", imageList.size()+" size");
 
         dbHelper = new DBHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         Cursor cursor;
-        Log.d("MYLOG", "----------TABLE THEME------------");
         cursor = db.query(dbHelper.getTableTheme(), null, null, null, null, null, null);
         initArrayList(cursor);
 
         cursor.close();
         lvMain = (ListView) findViewById(R.id.listTheme);
         lvMain.setAdapter(liAdapter);
-        Log.d("MYLOG", "---------------------------------");
 
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, MonitoringModeActivity.class);
                 intent.putExtra("idTheme", adapterView.getItemIdAtPosition(i+1)+"");
-                Log.d("MYLOG", "передааю ID темы: №"+adapterView.getItemIdAtPosition(i+1));
+                Log.d("MYLOG", "передаю id темы в активи выбора режима: " + adapterView.getItemIdAtPosition(i+1));
                 startActivity(intent);
             }
         });
@@ -92,7 +89,6 @@ public class MainActivity extends Activity {
             if(cursor.moveToFirst()){
                 do {
                     i++;
-                    Log.d("MYLOG", "count: "+i);
                 } while (cursor.moveToNext());
             }
         } else {
@@ -100,24 +96,6 @@ public class MainActivity extends Activity {
         }
         return i;
     }
-
-    private void logCursor(Cursor cursor) {
-        if( cursor != null ) {
-            if(cursor.moveToFirst()){
-                String str;
-                do {
-                    str = "";
-                    for( String cn: cursor.getColumnNames() ) {
-                        str = str.concat(cn + " = " + cursor.getString(cursor.getColumnIndex(cn)) + "; ");
-                    }
-                    Log.d("MYLOG", str);
-                } while (cursor.moveToNext());
-            }
-        } else {
-            Log.d("MYLOG", "BEDA!!!");
-        }
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
