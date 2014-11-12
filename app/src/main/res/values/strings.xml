@@ -10,5 +10,11 @@
     <string name="title_activity_examination">Examination</string>
     <string name="column_word">Word</string>
     <string name="column_translate">Translate</string>
-
+    <string name="title_dialog_cancel">You finished test!!!</string>
+    <string name="message_dialog_cancel">You rating is </string>
+    <string name="negative_button_exit">cancel</string>
+    <string name="positive_button_exit">ok</string>
+    <string name="positive_button">ok</string>
+    <string name="title_dialog_exit">Exit to you want?</string>
+    <string name="message_dialog_exit">If you to exit, progress not save!</string>
 </resources>

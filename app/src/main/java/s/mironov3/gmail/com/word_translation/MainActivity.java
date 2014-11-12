@@ -38,26 +38,39 @@ public class MainActivity extends Activity {
         imageList.add(contextResources.getDrawable(R.drawable.color));
         imageList.add(contextResources.getDrawable(R.drawable.sport));
 
-        dbHelper = new DBHelper(this);
+        /*dbHelper = new DBHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        Cursor cursor;
-        cursor = db.query(dbHelper.getTableTheme(), null, null, null, null, null, null);
+        Cursor cursor = db.query(dbHelper.getTableTheme(), null, null, null, null, null, null);
         initArrayList(cursor);
+        cursor.close();*/
 
-        cursor.close();
         lvMain = (ListView) findViewById(R.id.listTheme);
         lvMain.setAdapter(liAdapter);
-
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, MonitoringModeActivity.class);
-                intent.putExtra("idTheme", adapterView.getItemIdAtPosition(i+1)+"");
-                Log.d("MYLOG", "передаю id темы в активи выбора режима: " + adapterView.getItemIdAtPosition(i+1));
+                intent.putExtra("idTheme", adapterView.getItemIdAtPosition(i + 1) + "");
+                intent.putExtra("nameTheme", liAdapter.getTheme(i).getName());
+                Log.d("MYLOG", "передаю name темы в активи выбора режима: " + liAdapter.getTheme(i).getName());
+                Log.d("MYLOG", "передаю id темы в активи выбора режима: " + adapterView.getItemIdAtPosition(i + 1));
                 startActivity(intent);
             }
         });
+        Log.d("ACT", "onCreate()");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        listItemTheme.clear();
+        dbHelper = new DBHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.query(dbHelper.getTableTheme(), null, null, null, null, null, null);
+        initArrayList(cursor);
+        cursor.close();
+        liAdapter.notifyDataSetChanged();
+        Log.d("ACT", "onStart()");
     }
 
     private void initArrayList(Cursor cursor) {

@@ -53,8 +53,6 @@ public class PracticeActivity extends Activity {
                     b++;
                     PairOfWordTranslation p = new PairOfWordTranslation(cursor.getString(cursor.getColumnIndex(dbHelper.WORD)),
                             cursor.getString(cursor.getColumnIndex(dbHelper.TRANSLATE)));
-                    /*powtlList.add(new PairOfWordTranslation(cursor.getString(cursor.getColumnIndex(dbHelper.WORD)),
-                            cursor.getString(cursor.getColumnIndex(dbHelper.TRANSLATE))));*/
                     powtlList.add(p);
                     //Log.d("MYLOG", "\n word \t"+p.getWord()+"\ntranslate\t"+p.getTranslate());
                 } while (cursor.moveToNext());

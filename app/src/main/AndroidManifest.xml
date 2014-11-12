@@ -9,28 +9,33 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MonitoringModeActivity"
-            android:label="Monitoring Mode" >
+            android:label="Monitoring Mode"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".PracticeActivity"
-            android:label="@string/title_activity_practice" >
+            android:label="@string/title_activity_practice"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".SelfMonitrigActivity"
-            android:label="@string/title_activity_self_monitrig" >
+            android:label="@string/title_activity_self_monitrig"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ExaminationActivity"
-            android:label="@string/title_activity_examination" >
+            android:label="@string/title_activity_examination"
+            android:screenOrientation="portrait"
+            >
         </activity>
     </application>
 

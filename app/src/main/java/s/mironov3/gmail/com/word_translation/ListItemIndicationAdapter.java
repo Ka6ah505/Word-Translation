@@ -17,7 +17,6 @@ public class ListItemIndicationAdapter extends BaseAdapter {
     Context ctx;
     LayoutInflater lInflater;
     ArrayList<ListItemIndication> objects;
-    String wrd="конь";
 
     public ListItemIndicationAdapter(Context ctx, ArrayList<ListItemIndication> objects) {
         this.ctx = ctx;
@@ -50,7 +49,6 @@ public class ListItemIndicationAdapter extends BaseAdapter {
         ListItemIndication liIndication = getIndication(i);
         ((TextView) view.findViewById(R.id.number_question)).setText(liIndication.getNumber()+"");
         ((ImageView) view.findViewById(R.id.indication_answers_image)).setImageDrawable(liIndication.getImage());
-        wrd = "лом";
         return view;
     }
 

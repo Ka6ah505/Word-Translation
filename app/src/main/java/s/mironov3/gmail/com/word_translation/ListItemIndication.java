@@ -8,9 +8,23 @@ import android.graphics.drawable.Drawable;
 public class ListItemIndication {
     int number;
     Drawable image;
+    String word;
+    String translate;
 
-    public ListItemIndication(int number) {
+    public String getWord() {
+        return word;
+    }
+
+    public String getTraslate() {
+        return translate;
+    }
+
+    public ListItemIndication(int number, Drawable image, String word, String translate) {
+
         this.number = number;
+        this.image = image;
+        this.word = word;
+        this.translate = translate;
     }
 
     public ListItemIndication(int number, Drawable image) {
@@ -25,5 +39,9 @@ public class ListItemIndication {
 
     public Drawable getImage() {
         return image;
+    }
+
+    public void setImage(Drawable image) {
+        this.image = image;
     }
 }

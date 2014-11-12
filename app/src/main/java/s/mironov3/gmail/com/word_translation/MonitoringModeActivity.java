@@ -17,6 +17,7 @@ public class MonitoringModeActivity extends Activity {
     ListView lsMode;
     String [] items = {"Practice", "Self-monitoring", "Examination"};
     String idTheme;
+    String nameTheme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,9 @@ public class MonitoringModeActivity extends Activity {
 
         final Intent intent = getIntent();
         idTheme = intent.getStringExtra("idTheme");
-        Log.d("MYLOG", "принял ID темы: №" + idTheme);
+        nameTheme = intent.getStringExtra("nameTheme");
+        Log.d("MYLOG", "принял ID темы: № " + idTheme);
+        Log.d("MYLOG", "принял NAME темы: № " + nameTheme);
 
         lsMode.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -47,6 +50,7 @@ public class MonitoringModeActivity extends Activity {
                     case 2:
                         Intent intentExamination = new Intent(MonitoringModeActivity.this, ExaminationActivity.class);
                         intentExamination.putExtra("idTheme", idTheme);
+                        intentExamination.putExtra("nameTheme", nameTheme);
                         startActivity(intentExamination);
                         break;
                 }
