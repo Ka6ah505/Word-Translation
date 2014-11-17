@@ -17,4 +17,6 @@
     <string name="positive_button">ok</string>
     <string name="title_dialog_exit">Exit to you want?</string>
     <string name="message_dialog_exit">If you to exit, progress not save!</string>
+    <string name="button_remember">remember</string>
+    <string name="button_not_remember">not remember</string>
 </resources>

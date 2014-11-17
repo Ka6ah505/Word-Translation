@@ -43,7 +43,7 @@ public class MonitoringModeActivity extends Activity {
                         startActivity(intentPractice);
                         break;
                     case 1:
-                        Intent intentSMitring = new Intent(MonitoringModeActivity.this, SelfMonitrigActivity.class);
+                        Intent intentSMitring = new Intent(MonitoringModeActivity.this, SelfMonitoringActivity.class);
                         intentSMitring.putExtra("idTheme", idTheme);
                         startActivity(intentSMitring);
                         break;
