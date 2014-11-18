@@ -52,8 +52,6 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(MainActivity.this, MonitoringModeActivity.class);
                 intent.putExtra("idTheme", adapterView.getItemIdAtPosition(i + 1) + "");
                 intent.putExtra("nameTheme", liAdapter.getTheme(i).getName());
-                Log.d("MYLOG", "передаю name темы в активи выбора режима: " + liAdapter.getTheme(i).getName());
-                Log.d("MYLOG", "передаю id темы в активи выбора режима: " + adapterView.getItemIdAtPosition(i + 1));
                 startActivity(intent);
             }
         });
@@ -89,6 +87,7 @@ public class MainActivity extends Activity {
                 Log.d("MYLOG", "BEDA!!!");
             }
         }
+        cursor.close();
     }
 
     private Cursor getTable(int i) {

@@ -96,9 +96,6 @@ public class ExaminationActivity extends Activity {
         double d = (double)trueAnswers;
         double c = (double)arrListIndication.size();
         double i = d/c;
-        Log.d("MYLOG", ""+i);
-        Log.d("MYLOG", ""+trueAnswers);
-        Log.d("MYLOG", ""+arrListIndication.size());
         int r;
         if( 0.85 <= i && i == 1) {
             r=5;
@@ -126,7 +123,6 @@ public class ExaminationActivity extends Activity {
     }
 
     private void createDialogCancel(int rating) {
-        Log.d("MYLOG", "RATING:  "+rating);
         adb = new AlertDialog.Builder(this);
         adb.setTitle(R.string.title_dialog_cancel);
         adb.setMessage("You rating is "+rating);

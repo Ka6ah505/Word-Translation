@@ -2,7 +2,6 @@ package s.mironov3.gmail.com.word_translation;
 
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +48,6 @@ public class PairOfWordTranslationAdapter extends BaseAdapter {
             view = lInflater.inflate(R.layout.word_traslate_list_item, viewGroup, false);
         }
         PairOfWordTranslation pairOfWordTranslation = getPair(i);
-        Log.d("MYLOG", "\n word \t"+pairOfWordTranslation.getWord()+"\ntranslate\t"+pairOfWordTranslation.getTranslate());
         ((TextView) view.findViewById(R.id.word)).setText(pairOfWordTranslation.getWord());
         ((TextView) view.findViewById(R.id.translate)).setText(pairOfWordTranslation.getTranslate());
         return view;

@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "s.mironov3.gmail.com.word_translation"
-        minSdkVersion 10
+        minSdkVersion 14
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"

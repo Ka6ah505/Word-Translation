@@ -30,7 +30,6 @@ public class PracticeActivity extends Activity {
         final Intent intent = getIntent();
         idTheme = intent.getStringExtra("idTheme");
         i = Integer.valueOf(idTheme);
-        Log.d("MYLOG", "принял ID темы в Practice: №" + i);
 
         dbHelper = new DBHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -46,22 +45,18 @@ public class PracticeActivity extends Activity {
         Cursor cursor = db.rawQuery("select * from " + dbHelper.TABLE_WORD
                 + " where " + dbHelper.THEME_TRANSLATE_ID
                 + " = " + i, null);
-        int b=0;
         if( cursor != null ) {
             if (cursor.moveToFirst()) {
                 do {
-                    b++;
                     PairOfWordTranslation p = new PairOfWordTranslation(cursor.getString(cursor.getColumnIndex(dbHelper.WORD)),
                             cursor.getString(cursor.getColumnIndex(dbHelper.TRANSLATE)));
                     powtlList.add(p);
-                    //Log.d("MYLOG", "\n word \t"+p.getWord()+"\ntranslate\t"+p.getTranslate());
                 } while (cursor.moveToNext());
             } else {
                 Log.d("MYLOG", "BEDA!!!");
             }
         }
         cursor.close();
-        Log.d("MYLOG", "пар слов найдено " + b);
     }
 
     @Override

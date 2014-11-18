@@ -6,6 +6,12 @@
         android:interpolator="@android:anim/accelerate_interpolator"
         android:fromXDelta="0%"
         android:toXDelta="-100%"
-        android:startOffset="2000"
-        ></translate>
+        android:startOffset="1000" >
+    <rotate
+        android:fromDegrees="0"
+        android:pivotX="0%"
+        android:pivotY="100%"
+        android:toDegrees="-20"
+        android:duration="3000"/>
+    </translate>
 </set>

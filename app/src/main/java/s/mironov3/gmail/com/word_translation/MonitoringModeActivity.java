@@ -3,7 +3,6 @@ package s.mironov3.gmail.com.word_translation;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,8 +29,6 @@ public class MonitoringModeActivity extends Activity {
         final Intent intent = getIntent();
         idTheme = intent.getStringExtra("idTheme");
         nameTheme = intent.getStringExtra("nameTheme");
-        Log.d("MYLOG", "принял ID темы: № " + idTheme);
-        Log.d("MYLOG", "принял NAME темы: № " + nameTheme);
 
         lsMode.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
