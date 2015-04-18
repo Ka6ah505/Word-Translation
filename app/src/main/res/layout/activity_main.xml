@@ -6,7 +6,7 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/listTheme"
         android:drawSelectorOnTop="false"
         android:layoutAnimation="@anim/layout_bottom_to_top_slide" />
